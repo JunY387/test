@@ -3,8 +3,8 @@ version: '3.9'
 services:
   db-init:
     build:
-      context: backend
-      dockerfile: backend/scripts/Dockerfile
+      context: ./backend
+      dockerfile: scripts/Dockerfile
     container_name: voxify_db_init_test
     volumes:
       - data_volume:/app/data
@@ -16,8 +16,8 @@ services:
     restart: "no"
   tests:
     build:
-      context: backend
-      dockerfile: backend/tests/Dockerfile
+      context: ./backend
+      dockerfile: tests/Dockerfile
     container_name: voxify_tests
     depends_on:
       - db-init

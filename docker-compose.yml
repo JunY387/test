@@ -1,8 +1,8 @@
 services:
   api:
     build:
-      context: backend
-      dockerfile: backend/api/Dockerfile
+      context: ./backend/
+      dockerfile: api/Dockerfile
     container_name: voxify_api
     depends_on:
       - db-init
@@ -19,7 +19,7 @@ services:
 
   db-init:
     build:
-      context: ../Voxify-D2backup/Voxify-D2backup
+      context: .
       dockerfile: backend/scripts/Dockerfile
     container_name: voxify_db_init
     volumes:
@@ -32,7 +32,7 @@ services:
 
   tests:
     build:
-      context: ../Voxify-D2backup/Voxify-D2backup
+      context: .
       dockerfile: backend/tests/Dockerfile
     container_name: voxify_tests
     depends_on:
